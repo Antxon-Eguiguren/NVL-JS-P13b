@@ -1,0 +1,63 @@
+<!-- 
+
+Práctica P13b - Módulo 3 JS
+
+Queremos realizar una función que detecte palíndromos. O_o.
+Sí, palíndromo. Son palabras o frases que da igual si las lees de izquierda a derecha, que de derecha a izquierda, vas a entender lo mismo.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+			
+		var cadena = prompt("Introduce una palabra o una frase: ");
+
+		if (esPalindromo(cadena)) {
+			document.write("La cadena \"" + cadena + "\" es un palindromo.");
+		} else {
+			document.write("La cadena \"" + cadena + "\" no es un palindromo.");
+		}
+
+		function esPalindromo(cadena) {
+			// Convierto toda la cadena en minúsculas
+			cadena = cadena.toLowerCase();
+
+			// Reemplazo los espacios (en toda la frase con el atributo "g", sino solo reemplazaría el primero), por "no espacios". 
+			// Se puede usar "replace(/\s+/g, "")", es lo mismo, donde "\s+" significa todos los espacios.
+			cadena = cadena.replace(/ /g, "");
+
+			// Paso la cadena a un array para poder trabajar con él
+			var arrayCadena = cadena.split("");
+
+			// Se puede hacer todo en una misma sentencia así:
+			// var arrayCadena = cadena.toLowerCase().replace(/ /g, "").split("");
+
+			// Duplico el array (copio el contenido de uno en el otro)
+			var arrayCadenaAlReves = arrayCadena.slice();
+
+			// Doy la vuelta al segundo array
+			arrayCadenaAlReves.reverse();
+
+			// Se puede hacer en una misma sentencia así:
+			// var arrayCadenaAlReves = arrayCadena.slice().reverse();
+
+
+			// Comparo los arrays para ver si son iguales (cuando una letra es diferente, ya rompo el bucle y devuelvo "false")
+			for (var i = 0; i <= arrayCadena.length; i++) {
+				if (arrayCadena[i] != arrayCadenaAlReves[i]) {
+					return false;
+					break;
+				}
+				return true;
+			}
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
